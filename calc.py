@@ -2,24 +2,27 @@ import tkinter as tk
 from tkinter import messagebox
 
 wdow = tk.Tk()
-
+wdow.title("My Calculator app")
 operator_var = tk.StringVar(wdow,"+")
 
 def do_math():
-    match operator_var.get():
-        case "+":
-            messagebox.showinfo(message=str(first_number_variable.get() + second_number_variable.get()))
-        case "-":
-            messagebox.showinfo(message=str(first_number_variable.get() - second_number_variable.get()))
-        case "*":
-            messagebox.showinfo(message=str(first_number_variable.get() * second_number_variable.get()))
-        case "/":
-            try:
-                messagebox.showinfo(message=str(first_number_variable.get() / second_number_variable.get()))
-            except ZeroDivisionError:
-                messagebox.showerror(message="Hey, you cannot put second box as 0")
-        case _:
-            messagebox.showinfo(message="Somehow, this bug came.")
+    try:
+        match operator_var.get():
+            case "+":
+                messagebox.showinfo(message=str(first_number_variable.get() + second_number_variable.get()))
+            case "-":
+                messagebox.showinfo(message=str(first_number_variable.get() - second_number_variable.get()))
+            case "*":
+                messagebox.showinfo(message=str(first_number_variable.get() * second_number_variable.get()))
+            case "/":
+                try:
+                    messagebox.showinfo(message=str(first_number_variable.get() / second_number_variable.get()))
+                except ZeroDivisionError:
+                    messagebox.showerror(message="Hey, you cannot put second box as 0")
+            case _:
+                messagebox.showinfo(message="Somehow, this bug came.")
+    except tk.TclError:
+        messagebox.showerror(message="You typed in a non number!")
 #Operators 
 
 add = tk.Radiobutton(wdow,text="+",variable=operator_var,value="+")
