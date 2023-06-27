@@ -1,22 +1,9 @@
 import tkinter as tk
 
-
-def r_observer(*args):
-    print("Reading")
-
-
-def w_observer(*args):
-    print("Writing")
-
-
-dummy = tk.Tk()    # we need this although we won't display any windows
-variable = tk.StringVar()
-variable.set("abc")
-r_obsid = variable.trace("r", r_observer)
-w_obsid = variable.trace("w", w_observer)
-variable.set(variable.get() + 'd')  # read followed by write
-variable.trace_vdelete("r", r_obsid)
-variable.set(variable.get() + 'e')
-variable.trace_vdelete("w", w_obsid)
-variable.set(variable.get() + 'f')
-print(variable.get())
+window = tk.Tk()
+canvas = tk.Canvas(window, width=400, height=400, bg='blue')
+canvas.create_oval(200, 10, 10, 200, outline='red', width=20, fill='white')
+button = tk.Button(window, text="Quit", command=window.destroy)
+canvas.grid(row=0)
+button.grid(row=1)
+window.mainloop()

@@ -12,7 +12,6 @@ button_1 = Button(first_app, text="Button #1",bg="red")
 button_2 = Button(first_app, text="Button #2")
 button_3 = Button(first_app, text="Button #3")
 
-
 button_1.pack(side=tk.RIGHT)
 button_2.pack()
 button_3.pack()
